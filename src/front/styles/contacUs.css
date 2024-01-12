@@ -1,0 +1,216 @@
+:root {
+    --colorTextos: #eae4e467;
+    --mainColor: #29335c;
+    --mainColorLight: #5767aa;
+    --secondaryColor: #005F71;
+    --textColor: #eee;
+}
+
+.contactUs_cuerpo {
+    margin: 0 auto;
+    width: 90%;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10rem;
+}
+
+.contactUs_titulo {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 800;
+    color: rgb(245, 244, 244);
+}
+
+.contactUs_formulario {
+    background: var(--secondaryColor);
+    width: 40%;
+    padding: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+}
+
+.contactUs_contenedor-formulario {
+    width: 100%;
+    margin: auto;
+}
+
+.contactUs_formulario .contactUs_grupo {
+    position: relative;
+    margin: 45px;
+}
+
+.contactUs_entrada,
+.contactUs_area {
+    background: none;
+    color: #c6c6c6;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+    resize: none;
+}
+
+.contactUs_entrada:focus,
+.contactUs_area:focus {
+    outline: none;
+    color: rgb(255, 255, 255);
+}
+
+.contactUs_entrada:focus~.contactUs_etiqueta,
+.contactUs_entrada:valid~.contactUs_etiqueta,
+.contactUs_area:focus~.contactUs_etiqueta,
+.contactUs_area:valid~.contactUs_etiqueta {
+    position: absolute;
+    top: -14px;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.contactUs_etiqueta {
+    color: var(--colorTextos);
+    font-size: 16px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+
+.contactUs_entrada:focus~.barra::before,
+.contactUs_area:focus~.barra::before {
+    width: 100%;
+}
+
+.contactUs_barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.contactUs_barra::before {
+    content: '';
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to right, #6a82fb, #fc5c7d);
+    transition: 0.3s ease all;
+    left: 0%;
+}
+
+.contactUs_boton {
+    display: block;
+    width: 100px;
+    height: 40px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.contactUs_imagen_flex {
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactUs_imagen {
+    width: 20vw;
+    transform: scaleX(-1);
+}
+
+@media screen and (max-width: 1100px) {
+    .contactUs_formulario {
+        width: 50%;
+    }
+
+    .contactUs_imagen_flex {
+        display: none;
+    }
+
+    .contactUs_cuerpo {
+        margin: 0 auto;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contactUs_formulario {
+        width: 90%;
+    }
+
+    .contactUs_imagen_flex {
+        display: none;
+    }
+
+    .contactUs_cuerpo {
+        margin: 0 auto;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .contactUs_cuerpo {
+        flex-direction: column;
+        /* Cambiar la dirección a columna en pantallas pequeñas */
+        align-items: stretch;
+        /* Estirar los elementos para ocupar todo el ancho */
+        gap: 2rem;
+        /* Reducir el espacio entre elementos */
+    }
+
+    .contactUs_imagen_flex {
+        display: none;
+    }
+
+    .contactUs_imagen {
+        display: none;
+    }
+
+    .contactUs_formulario {
+        width: 100%;
+        /* Ocupar todo el ancho disponible */
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .contactUs_cuerpo {
+        flex-direction: column;
+        /* Cambiar la dirección a columna en pantallas pequeñas */
+        align-items: stretch;
+        /* Estirar los elementos para ocupar todo el ancho */
+        gap: 2rem;
+        /* Reducir el espacio entre elementos */
+    }
+
+    .contactUs_imagen {
+        width: 100%;
+        /* Ocupar todo el ancho disponible */
+        margin-bottom: 1rem;
+        /* Añadir margen inferior para separar del formulario */
+    }
+
+    .contactUs_formulario {
+        width: 100%;
+        /* Ocupar todo el ancho disponible */
+    }
+}

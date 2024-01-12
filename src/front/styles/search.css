@@ -1,0 +1,42 @@
+.search {
+    margin: 0 auto;
+    width: 90%;
+    padding: 4rem 0;
+}
+
+.search_flex {
+    display: flex;
+}
+
+.search_flex_input {
+    width: 85% !important;
+}
+
+.search_flex_button {
+    width: 15% !important;
+}
+
+.search_title {
+    font-size: 3rem;
+}
+
+.search_paragraph {
+    text-align: justify;
+    margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .search_flex {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .search_flex_input {
+        width: 100% !important;
+    }
+
+    .search_flex_button {
+        width: 80% !important;
+    }
+}

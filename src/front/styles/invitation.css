@@ -1,0 +1,40 @@
+.invitation {
+    width: 90%;
+    margin: 0 auto;
+    padding: 9rem 4rem;
+}
+
+.Invitation_title {
+    color: var(--mainColor);
+    font-size: 3vw;
+    margin-bottom: 6rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.Invitation_paragraph {
+    color: var(--mainColor);
+    text-align: justify;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 992px) {}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {}
+
+@media screen and (max-width: 767px) and (min-width: 576px) {}
+
+@media screen and (max-width: 575px) and (min-width: 320px) {
+    .invitation {
+        padding: 7rem 0;
+    }
+
+    .Invitation_title {
+        font-size: 2rem;
+        margin-bottom: 6rem;
+    }
+
+    .Invitation_paragraph {
+        font-size: 1.3rem;
+    }
+}

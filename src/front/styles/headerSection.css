@@ -27,19 +27,18 @@
 .headerSection_flex_img {
     width: 20rem;
     margin-right: 8rem;
-    transform: scale(-1, 1);
     transform-origin: center;
 }
 
 .headerSection_flex_size_title {
-    font-size: 6rem;
+    font-size: 6vw;
     color: white;
     font-weight: bold;
 }
 
 .headerSection_flex_size_subtitle {
-    font-size: 2rem;
-    color: var(--secondaryColor);
+    font-size: 2vw;
+    color: #db2b39;
 }
 
 .headerSection_flex_size_paragraph {
@@ -118,7 +117,7 @@
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
     .header_background {
-        height: 230vh;
+        height: 140vh;
     }
 
     .headerSection_flex {
@@ -137,8 +136,8 @@
     }
 
     .header_meme_paragraph_top {
-        top: 34rem;
-        right: 12rem;
+        top: 30%;
+        right: 27%;
     }
 
     .header_meme_paragraph_bottom {
@@ -146,17 +145,29 @@
         font-size: 2rem;
         font-weight: bold;
         position: absolute;
-        bottom: 13rem;
-        right: 10rem;
+        bottom: 28%;
+        right: 20%;
     }
 
 }
 
-@media screen and (max-width: 767px) and (min-width: 576px) {}
+@media screen and (max-width: 767px) and (min-width: 576px) {
 
-@media screen and (max-width: 575px) and (min-width: 319px) {
+    .headerSection_flex_size_title {
+        text-align: center;
+    }
+
+    .headerSection_flex_size_subtitle {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .headerSection_flex_size_paragraph {
+        text-align: center;
+    }
+
     .header_background {
-        height: 250vh;
+        height: 200vh;
     }
 
     .headerSection_flex {
@@ -167,5 +178,73 @@
 
     .headerSection_flex_size {
         width: 100%;
+    }
+
+    .headerSection_flex_img {
+        width: 30rem;
+        margin-right: 0rem;
+    }
+
+    .header_meme_paragraph_top {
+        top: 35%;
+        right: 25%;
+    }
+
+    .header_meme_paragraph_bottom {
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        position: absolute;
+        bottom: 20%;
+        right: 20%;
+    }
+}
+
+@media screen and (max-width: 575px) and (min-width: 319px) {
+    .header_background {
+        height: 140vh;
+    }
+
+    .headerSection_flex_size_title {
+        text-align: center;
+    }
+
+    .headerSection_flex_size_subtitle {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .headerSection_flex_size_paragraph {
+        text-align: center;
+    }
+
+    .headerSection_flex {
+        flex-direction: column;
+        gap: 7rem;
+        justify-content: center;
+    }
+
+    .headerSection_flex_size {
+        width: 100%;
+    }
+
+    .headerSection_flex_img {
+        width: 20rem;
+        margin-right: 0rem;
+    }
+
+    .header_meme_paragraph_top {
+        font-size: 2rem;
+        top: 45%;
+        right: 25%;
+    }
+
+    .header_meme_paragraph_bottom {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        position: absolute;
+        bottom: 13%;
+        right: 10%;
     }
 }

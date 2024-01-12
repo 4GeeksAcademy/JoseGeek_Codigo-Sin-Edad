@@ -13,22 +13,22 @@ const HeaderSection = () => {
             <h1 className="headerSection_flex_size_title">
               <ReactTyped
                 backSpeed={50}
-                strings={["Jose Geek", "Developer"]}
+                strings={["Jose Geek", "Código Sin Edad"]}
                 typeSpeed={200}
                 loop
               />
             </h1>
             <h2 className="headerSection_flex_size_subtitle">
-              Desarrollador full stack
+              Nunca es tarde para empezar a programar
             </h2>
             <p className="headerSection_flex_size_paragraph">
-              Empecé mi emocionante travesía en el desarrollo tarde, pero cada
-              línea de código es un testimonio de mi dedicación. Desafiando
-              convenciones, he transformado desafíos en oportunidades,
-              demostrando que nunca es tarde para abrazar el fascinante mundo
-              del desarrollo.
+              Hola! Soy Papa Hop y seré tu guía en esta web. No importa si eres
+              joven o como yo te duelen las rodillas al estar todo el día
+              sentado delante del ordenador, nunca es tarde para iniciarse en
+              este apasionante mundo de la programación, donde nunca dejarás de
+              aprender!
             </p>
-            <Button text={"Contáctame"} color={"#db2b39"} />
+            <Button text={"Registrarse"} enlace={"/login"} />
           </div>
           <img
             className="headerSection_flex_img"
@@ -38,15 +38,11 @@ const HeaderSection = () => {
         </div>
       </section>
       <div className="header_meme">
-        <p className="header_meme_paragraph_top">Hola Soy Jose Geek</p>
-        <p className="header_meme_paragraph_bottom">
-          Empece tarde en la programación
-        </p>
         <div class="custom-shape-divider-bottom-1704641617">
           <svg
             data-name="Layer 1"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
+            viewBox="0 0 1199 119"
             preserveAspectRatio="none"
           >
             <path

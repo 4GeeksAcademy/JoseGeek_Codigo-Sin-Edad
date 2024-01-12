@@ -1,0 +1,71 @@
+:root {
+    --mainColor: #29335c;
+    --mainColorLight: #5767aa;
+    --secondaryColor: #db2b39;
+    --textColor: #eee;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.recomendationMe {
+    width: 100vw;
+    margin: 0;
+}
+
+.curved-div {
+    position: relative;
+    background: var(--secondaryColor);
+    color: #FFF;
+    text-align: center;
+    overflow: hidden;
+}
+
+.curved-div svg {
+    display: block;
+}
+
+.curved-div.upper {
+    background: #fff;
+}
+
+.recomendationMe_title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.recomendationMe_paragraph_container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem 3rem 0;
+}
+
+.recomendationMe_paragraph_container_description {
+    text-align: justify;
+}
+
+.recomendationMe_flex_cards {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 992px) {}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {}
+
+@media screen and (max-width: 767px) and (min-width: 576px) {}
+
+@media screen and (max-width: 575px) and (min-width: 320px) {
+    .recomendationMe_paragraph_container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .recomendationMe_title {
+        font-size: 1.5rem;
+    }
+}

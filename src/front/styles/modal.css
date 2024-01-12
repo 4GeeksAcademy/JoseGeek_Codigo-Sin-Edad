@@ -1,0 +1,58 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.629);
+    /* Fondo semi-transparente negro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background-color: white;
+    width: 35rem;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.505);
+}
+
+.modal_flex_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal_close {
+    font-size: 1.5rem;
+    transition: color 4ms;
+}
+
+.modal_close:hover {
+    cursor: pointer;
+    color: rgb(169, 85, 85);
+}
+
+.modal_paragraph {
+    margin-top: 1rem;
+}
+
+.modal_flex {
+    display: flex;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+    }
+
+    .modal_flex {
+        flex-direction: column;
+    }
+}

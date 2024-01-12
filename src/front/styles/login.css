@@ -1,0 +1,18 @@
+.register_link {
+    text-decoration: none;
+    color: white;
+}
+
+.register_link:hover {
+    color: white
+}
+
+.button_login {
+    width: 100%;
+}
+
+@media screen and (max-width: 575px) and (min-width: 320px) {
+    .login-page2-inner {
+        padding: 1rem;
+    }
+}

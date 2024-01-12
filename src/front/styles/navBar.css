@@ -14,7 +14,7 @@
   --textColor: #eee;
 }
 
-header {
+.header {
   background-color: var(--mainColor);
   color: var(--textColor);
 }
@@ -29,7 +29,7 @@ header {
 }
 
 nav {
-  width: 9rem;
+  width: 15rem;
   display: flex;
   justify-content: space-between;
 }
@@ -79,7 +79,7 @@ nav {
 }
 
 .logo {
-  margin: 0;
+  width: 4rem;
 }
 
 .link {
@@ -92,11 +92,12 @@ nav {
 
 .btns {
   display: flex;
-  justify-content: space-between;
-  width: 8rem;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
 }
 
-@media only screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
 
   .btns {
     display: flex;
@@ -130,16 +131,30 @@ nav {
     gap: 1.5rem;
     background-color: var(--mainColor);
     transition: 1s;
+    z-index: 1;
   }
 
   header .responsive_nav {
     transform: translateY(100vh);
+    z-index: 1;
   }
 
   nav .nav-close-btn {
     position: absolute;
     top: 2rem;
     right: 2rem;
+  }
+
+  nav {
+    width: 8rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: space-evenly;
+    width: 15rem;
   }
 
   nav a {

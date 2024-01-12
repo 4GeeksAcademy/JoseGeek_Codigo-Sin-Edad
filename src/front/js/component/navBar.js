@@ -2,11 +2,9 @@ import React, { useRef } from "react";
 import "../../styles/navBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaBars, FaTimes } from "react-icons/fa";
-import {
-  faFacebookF,
-  faGithub,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import logo from "../../../../public/img/logo.png";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navRef = useRef();
@@ -17,18 +15,23 @@ function Navbar() {
 
   return (
     <>
-      <header>
+      <header className="header">
         <div className="container_div">
           <div className="links" ref={navRef}>
-            <h3 className="logo">LOGO</h3>
+            <Link to={"/"}>
+              <img className="logo" src={logo} alt="logo" />
+            </Link>
             <a className="btn link btn_responsive_disabled" href="#">
-              Sobre mi
+              Mis recomendaciones
             </a>
             <a className="btn link btn_responsive_disabled" href="#">
-              Recomendaciones
+              Tus recomendaciones
             </a>
             <a className="btn link btn_responsive_disabled" href="#">
               Contácto
+            </a>
+            <a className="btn link btn_responsive_disabled" href="#">
+              Sobre mi
             </a>
           </div>
           <nav ref={navRef}>
@@ -43,21 +46,35 @@ function Navbar() {
               Contácto
             </a>
             <div className="btns">
-              <button type="button" className="btn btn-primary">
+              <Link
+                style={{ margin: "0" }}
+                to={"#"}
+                className="btn btn-primary"
+              >
                 <FontAwesomeIcon icon={faGithub} />
-              </button>
-              <button type="button" className="btn btn-primary">
-                <FontAwesomeIcon icon={faFacebookF} />
-              </button>
-              <button type="button" className="btn btn-primary">
+              </Link>
+              <Link
+                style={{ margin: "0" }}
+                to={"#"}
+                className="btn btn-primary"
+              >
                 <FontAwesomeIcon icon={faLinkedinIn} />
-              </button>
-              <button
+              </Link>
+              <Link
+                style={{ margin: "0" }}
+                to={"#"}
+                className="btn btn-primary"
+              >
+                Iniciar Sesión
+              </Link>
+              <Link
+                style={{ width: "3rem" }}
                 className="nav-btn nav-close-btn btn_responsive"
                 onClick={showNavbar}
+                to={"#"}
               >
                 <FaTimes />
-              </button>
+              </Link>
             </div>
           </nav>
           <button className="nav-btn btn_responsive" onClick={showNavbar}>

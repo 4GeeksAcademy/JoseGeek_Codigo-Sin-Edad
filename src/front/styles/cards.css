@@ -1,0 +1,124 @@
+:root {
+    --mainColor: #29335c;
+    --mainColorLight: #5767aa;
+    --secondaryColor: #db2b39;
+    --textColor: #eee;
+}
+
+
+.cards_container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.cards_container .card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    margin: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.cards_container .card .imgBx img {
+    width: 100%;
+    height: 100vh;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.cards_container .card .content {
+    position: absolute;
+    bottom: -162px;
+    width: 100%;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+    transition: bottom 0.5s;
+    transition-delay: 0.8s;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cards_container .card .content .contentBx h3 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0 15px;
+    line-height: 1.1em;
+    transition: 0.5s;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition-delay: 0.6s;
+}
+
+.cards_container .card .content .contentBx h3 span {
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.cards_container .card .content .sci {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+}
+
+.cards_container .card .content .sci li {
+    list-style: none;
+    margin: 0 10px;
+    transform: translateY(40px);
+    transition: 0.5s;
+    opacity: 0;
+    transition-delay: calc(0.2s * var(--i));
+}
+
+.cards_container .card .content .sci li a {
+    color: white;
+    font-size: 30px;
+}
+
+.cards_container .card:hover .content {
+    bottom: 0px;
+    transition-delay: 0s;
+}
+
+.cards_container .card:hover .content .contentBx h3 {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.cards_container .card:hover .sci li {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.cards_btn {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+}
+
+.cards_btn:hover {
+    color: #7f828d;
+}
