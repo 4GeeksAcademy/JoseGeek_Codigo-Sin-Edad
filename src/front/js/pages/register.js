@@ -12,9 +12,8 @@ import LoginPage, {
 } from "@react-login-page/page2";
 import defaultBannerImage from "@react-login-page/page2/banner-image";
 import { Input } from "react-login-page";
-import { Button } from "@react-login-page/page2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const styles = {
@@ -25,6 +24,14 @@ const styles = {
 
 const Register = () => (
   <div style={styles}>
+    <Link
+      to={"/"}
+      style={{ margin: "1rem" }}
+      type="button"
+      className="btn btn-outline-light"
+    >
+      Volver
+    </Link>
     <LoginPage style={styles}>
       <Logo style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <img style={{ height: "2rem" }} src={logo} alt="logo" />

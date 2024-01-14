@@ -21,34 +21,46 @@ function Navbar() {
             <Link to={"/"}>
               <img className="logo" src={logo} alt="logo" />
             </Link>
-            <a className="btn link btn_responsive_disabled" href="#">
+            <a
+              // onClick={() => redirigirASeccion("recomendationMe")}
+              className="btn link btn_responsive_disabled"
+              href="#recomendationMe"
+            >
               Mis recomendaciones
             </a>
-            <a className="btn link btn_responsive_disabled" href="#">
+            <a
+              className="btn link btn_responsive_disabled"
+              href="#recomendationYou"
+            >
               Tus recomendaciones
             </a>
-            <a className="btn link btn_responsive_disabled" href="#">
+            <a className="btn link btn_responsive_disabled" href="#contactUs">
               Contácto
             </a>
-            <a className="btn link btn_responsive_disabled" href="#">
+            <a className="btn link btn_responsive_disabled" href="#aboutMe">
               Sobre mi
             </a>
           </div>
           <nav ref={navRef}>
-            <h2 className="btn_responsive">LOGO</h2>
-            <a className="btn link btn_responsive" href="#">
+            <Link className="btn_responsive" to={"/"}>
+              <img className="logo" src={logo} alt="logo" />
+            </Link>
+            <a className="btn link btn_responsive" href="#aboutMe">
               Sobre mi
             </a>
-            <a className="btn link btn_responsive" href="#">
-              Recomendaciones
+            <a className="btn link btn_responsive" href="#recomendationYou">
+              Tus recomendaciones
             </a>
-            <a className="btn link btn_responsive" href="#">
+            <a className="btn link btn_responsive" href="#recomendationMe">
+              Mis Recomendaciones
+            </a>
+            <a className="btn link btn_responsive" href="#contactUs">
               Contácto
             </a>
             <div className="btns">
               <Link
                 style={{ margin: "0" }}
-                to={"#"}
+                to={"https://github.com/JoseGeek78"}
                 className="btn btn-primary"
               >
                 <FontAwesomeIcon icon={faGithub} />
@@ -62,7 +74,7 @@ function Navbar() {
               </Link>
               <Link
                 style={{ margin: "0" }}
-                to={"#"}
+                to={"/login"}
                 className="btn btn-primary"
               >
                 Iniciar Sesión

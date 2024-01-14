@@ -14,7 +14,9 @@ const AboutMe = () => {
       <div className="aboutMe_container_glasess">
         <div className="aboutMe_container glasses">
           <div className="aboutMe">
-            <h2 className="aboutMe_title">Acerca de Mí</h2>
+            <h2 id="aboutMe" className="aboutMe_title">
+              Acerca de Mí
+            </h2>
             <div className="aboutMe_title_flex">
               <p className="aboutMe_title_flex_paragraph">
                 ¡Hola!, soy Jose, aunque también me puedas llamar JoseGeek.

@@ -5,7 +5,7 @@ import "../../styles/recomendationYou.css";
 const RecomendationYou = () => {
   return (
     <section className="recomendationYou">
-      <h3 className="recomendationYou_title">
+      <h3 id="recomendationYou" className="recomendationYou_title">
         Únete a la comunidad y haz tu aporte o recomendación
       </h3>
       <p className="recomendationYou_paragraph">

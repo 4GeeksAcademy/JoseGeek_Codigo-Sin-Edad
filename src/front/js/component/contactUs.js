@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ContactUs = () => {
   return (
     <div className="contactUs_cuerpo">
-      <form action="" className="contactUs_formulario">
+      <form id="contactUs" action="" className="contactUs_formulario">
         <h1 className="contactUs_titulo">Contactar</h1>
         <div className="contactUs_grupo">
           <input

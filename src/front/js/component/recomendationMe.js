@@ -19,7 +19,9 @@ const RecomendationMe = () => {
       </div>
       <div class="curved-div">
         <div className="recomendationMe_paragraph_container">
-          <h3 className="recomendationMe_title">Mis Recomendaciones</h3>
+          <h3 id="recomendationMe" className="recomendationMe_title">
+            Mis Recomendaciones
+          </h3>
         </div>
         <div className="recomendationMe_paragraph_container">
           <p className="recomendationMe_paragraph_container_description">

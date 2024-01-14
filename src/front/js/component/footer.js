@@ -16,7 +16,7 @@ const Footer = () => {
           <Link href="{LINKEDIN_LINK}">
             <FaLinkedin />
           </Link>
-          <Link href="{GITHUB_LINK}">
+          <Link to="https://github.com/JoseGeek78">
             <FaGithub />
           </Link>
         </div>

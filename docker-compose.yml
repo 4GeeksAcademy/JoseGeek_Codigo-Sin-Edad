@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  base_datos:
+    image: mysql:latest
+    restart: always
+    container_name: comunity_geek
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=alejo
+      - MYSQL_DATABASE=comunidad_geek
+    ports:
+      - "3308:3306"
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:
