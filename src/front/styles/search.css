@@ -1,3 +1,15 @@
+body {
+    background-color: rgb(245, 245, 230);
+}
+
+.bgSvg {
+    fill: rgb(245, 245, 230) !important;
+}
+
+.bgSvgDiv {
+    background-color: rgb(245, 245, 230) !important;
+}
+
 .search {
     margin: 0 auto;
     width: 90%;
