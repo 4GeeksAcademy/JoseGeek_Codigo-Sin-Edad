@@ -1,5 +1,6 @@
 from ..entities.user_entities import UserModel
-from ...config import db
+from config import db
+from ..models import Usuario
 
 
 class UserAuthetication:

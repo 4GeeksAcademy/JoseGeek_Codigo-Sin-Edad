@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    /* border: 1rem solid white; */
 }
 
 .modal_close {
@@ -40,6 +41,8 @@
 
 .modal_paragraph {
     margin-top: 1rem;
+    background-color: rgba(48, 65, 95, 0.097);
+    padding: .8rem .8rem;
 }
 
 .modal_flex {

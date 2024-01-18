@@ -16,7 +16,7 @@ const Search = () => {
 
       <form className="search_flex" role="search">
         <input
-          className="form-control me-2 search_flex_input"
+          className="form-control me-2 search_flex_input bgSvg"
           type="search"
           placeholder="Buscar"
           aria-label="Buscar"

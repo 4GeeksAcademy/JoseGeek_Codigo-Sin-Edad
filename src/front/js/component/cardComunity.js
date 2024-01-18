@@ -17,7 +17,12 @@ const CardComunity = () => {
     <>
       {isModalOpen && (
         <Modal closeModal={closeModal}>
-          <p className="cardComunity_modal">Titulo</p>
+          <p className="cardComunity_modal">
+            Titulo{" "}
+            <span className="cardComunity_modal_title">
+              Fecha de publicacion
+            </span>
+          </p>
         </Modal>
       )}
       <Link onClick={handleCardClick} className="cardComunity" to={"#"}>
