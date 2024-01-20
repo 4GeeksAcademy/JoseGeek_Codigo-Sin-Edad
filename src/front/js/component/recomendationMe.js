@@ -17,7 +17,7 @@ const RecomendationMe = () => {
           ></path>
         </svg>
       </div>
-      <div class="curved-div">
+      <div className="curved-div">
         <div className="recomendationMe_paragraph_container">
           <h3 id="recomendationMe" className="recomendationMe_title">
             Mis Recomendaciones

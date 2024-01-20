@@ -3,6 +3,7 @@ import os
 from MySQLdb import DataError, IntegrityError
 from werkzeug.security import generate_password_hash
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from sqlalchemy.orm import Session
 from config import db
 from flask_migrate import Migrate
@@ -13,6 +14,8 @@ from api.entities.user_entities import UserModel
 
 
 app = Flask(__name__)
+# CORS(app, resources={r"/api/*": {"origins": "*"}}) # Solititudes de cualquier origen al path de api
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:alejo@localhost:3308/comunidad_geek'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -21,6 +24,7 @@ migrate = Migrate(app, db)
 
 
 @app.route("/")
+# @cross_origin()
 def home():
     """Ruta principal de la aplicación."""
     usuarios = Usuario.query.all()
@@ -87,7 +91,7 @@ def route_login():
     if logged_user is None:
         return jsonify({"msg": "Contraseña incorrecta"}), 401
 
-    return jsonify({"msg": "Login perfecto", "user": logged_user.email, "telefono": logged_user.telefono}), 200
+    return jsonify({"msg": "Login perfecto", "user": logged_user.email, "telefono": logged_user.telefono, "id": logged_user.id}), 200
 
 
 @app.route('/add_comment', methods=['POST'])

@@ -52,7 +52,7 @@ const ContactUs = () => {
           <span className="contactUs_barra"></span>
           <label className="contactUs_etiqueta">Mensaje</label>
         </div>
-        <Link to={"#"} class="btn btn-success contactUs_boton">
+        <Link to={"#"} className="btn btn-success contactUs_boton">
           Enviar
         </Link>
       </form>

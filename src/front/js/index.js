@@ -1,9 +1,10 @@
-//import react into the bundle
+// Importar React y createRoot
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
-//import your own components
+// Importar tus propios componentes
 import Layout from "./layout";
 
-//render your react application
-ReactDOM.render(<Layout />, document.querySelector("#app"));
+// Crear una raíz y renderizar tu aplicación React
+const root = createRoot(document.querySelector("#app"));
+root.render(<Layout />);

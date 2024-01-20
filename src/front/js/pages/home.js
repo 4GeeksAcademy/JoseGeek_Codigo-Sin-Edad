@@ -10,8 +10,6 @@ import ContactUs from "../component/contactUs.js";
 import Footer from "../component/footer.js";
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
-
   return (
     <>
       <NavBar />

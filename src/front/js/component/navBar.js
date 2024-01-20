@@ -1,12 +1,16 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import "../../styles/navBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../../../public/img/logo.png";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { Toaster, toast } from "sonner";
 
 function Navbar() {
+  const { store, actions } = useContext(Context);
+
   const navRef = useRef();
 
   const showNavbar = () => {
@@ -21,42 +25,98 @@ function Navbar() {
             <Link to={"/"}>
               <img className="logo" src={logo} alt="logo" />
             </Link>
-            <a
-              // onClick={() => redirigirASeccion("recomendationMe")}
-              className="btn link btn_responsive_disabled"
-              href="#recomendationMe"
-            >
-              Mis recomendaciones
-            </a>
-            <a
-              className="btn link btn_responsive_disabled"
-              href="#recomendationYou"
-            >
-              Tus recomendaciones
-            </a>
-            <a className="btn link btn_responsive_disabled" href="#contactUs">
-              Contácto
-            </a>
-            <a className="btn link btn_responsive_disabled" href="#aboutMe">
-              Sobre mi
-            </a>
+            {store.dataUser ? (
+              <>
+                <Link
+                  className="btn link btn_responsive_disabled"
+                  to={store.dataUser ? "/" : "#recomendationMe"}
+                >
+                  Inicio
+                </Link>
+                <Link
+                  href="#recomendationYou"
+                  to={store.dataUser && "/comunity"}
+                  className="btn link btn_responsive_disabled"
+                >
+                  Comunidad
+                </Link>
+                <Link
+                  to={store.dataUser && "/"}
+                  className="btn link btn_responsive_disabled"
+                  href="#contactUs"
+                >
+                  Contácto
+                </Link>
+                <Link
+                  className="btn link btn_responsive_disabled"
+                  href="#aboutMe"
+                >
+                  Sobre mi
+                </Link>
+              </>
+            ) : (
+              <>
+                <a
+                  className="btn link btn_responsive_disabled"
+                  href="#recomendationMe"
+                >
+                  Mis recomendaciones
+                </a>
+                <a
+                  href="#recomendationYou"
+                  className="btn link btn_responsive_disabled"
+                >
+                  Tus recomendaciones
+                </a>
+                <a
+                  className="btn link btn_responsive_disabled"
+                  href="#contactUs"
+                >
+                  Contácto
+                </a>
+                <a className="btn link btn_responsive_disabled" href="#aboutMe">
+                  Sobre mi
+                </a>
+              </>
+            )}
           </div>
           <nav ref={navRef}>
             <Link className="btn_responsive" to={"/"}>
               <img className="logo" src={logo} alt="logo" />
             </Link>
-            <a className="btn link btn_responsive" href="#aboutMe">
-              Sobre mi
-            </a>
-            <a className="btn link btn_responsive" href="#recomendationYou">
-              Tus recomendaciones
-            </a>
-            <a className="btn link btn_responsive" href="#recomendationMe">
+            {store.dataUser ? (
+              <>
+                <Link
+                  className="btn link btn_responsive"
+                  to={store.dataUser && "/"}
+                >
+                  Inicio
+                </Link>
+                <Link
+                  to={store.dataUser && "/"}
+                  className="btn link btn_responsive"
+                  href="#aboutMe"
+                >
+                  Sobre mi
+                </Link>
+                <Link
+                  to={store.dataUser && "/comunity"}
+                  className="btn link btn_responsive"
+                >
+                  Comunidad
+                </Link>
+              </>
+            ) : (
+              <a className="btn link btn_responsive" href="#aboutMe">
+                Sobre mi
+              </a>
+            )}
+            <Link className="btn link btn_responsive" href="#recomendationMe">
               Mis Recomendaciones
-            </a>
-            <a className="btn link btn_responsive" href="#contactUs">
+            </Link>
+            <Link className="btn link btn_responsive" href="#contactUs">
               Contácto
-            </a>
+            </Link>
             <div className="btns">
               <Link
                 style={{ margin: "0" }}
@@ -74,10 +134,11 @@ function Navbar() {
               </Link>
               <Link
                 style={{ margin: "0" }}
-                to={"/login"}
+                to={store.dataUser ? "/" : "/login"}
                 className="btn btn-primary"
+                onClick={store.dataUser ? () => actions.loguot() : null}
               >
-                Iniciar Sesión
+                {store.dataUser ? "Cerrar Sesión" : "Iniciar Sesión"}
               </Link>
               <Link
                 style={{ width: "3rem" }}
@@ -94,6 +155,7 @@ function Navbar() {
           </button>
         </div>
       </header>
+      <Toaster richColors />
     </>
   );
 }
