@@ -14,7 +14,7 @@ class UserAuthetication:
             if user is not None and UserModel.check_password(user.password, usuario.password):
                 # Crear un objeto UserModel con los datos del usuario
                 logged_user = UserModel(
-                    user.id, user.email, user.password, user.telefono)
+                    user.id, user.email, user.password, user.telefono, user.usuario)
                 return logged_user
             else:
                 return None

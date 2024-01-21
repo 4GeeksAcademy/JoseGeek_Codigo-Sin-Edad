@@ -1,11 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import injectContext, { Context } from "./store/appContext";
+import { Toaster, toast } from "sonner";
 import { Home } from "./pages/home";
 import LoginHome from "./pages/login";
 import Register from "./pages/register";
 import Comunity from "./pages/comunity";
 import ProtectedRoute from "./component/protectedRoute";
+import ProtectedRouteLogin from "./component/protectedRouteLogin";
 
 const Layout = () => {
   const { store, actions } = useContext(Context);
@@ -19,13 +21,29 @@ const Layout = () => {
     }
   }, []);
 
+  useEffect(() => {}, []);
+
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route element={<Home />} path="/" />
-          <Route element={<LoginHome />} path="/login" />
-          <Route element={<Register />} path="/register" />
+          <Route
+            element={
+              <ProtectedRouteLogin>
+                <LoginHome />
+              </ProtectedRouteLogin>
+            }
+            path="/login"
+          />
+          <Route
+            element={
+              <ProtectedRouteLogin>
+                <Register />
+              </ProtectedRouteLogin>
+            }
+            path="/register"
+          />
           <Route
             element={
               <ProtectedRoute>
@@ -37,6 +55,7 @@ const Layout = () => {
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>
+      <Toaster richColors />
     </div>
   );
 };

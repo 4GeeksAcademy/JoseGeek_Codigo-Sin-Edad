@@ -35,7 +35,7 @@ def home():
 def register():
     try:
         data = request.json
-        if "email" not in data or "password" not in data or "telefono" not in data:
+        if "email" not in data or "password" not in data or "telefono" not in data or "usuario" not in data:
             return jsonify({"msg": "Faltan datos de email, password o teléfono"}), 400
 
         if len(data["email"]) > 255:
@@ -45,19 +45,29 @@ def register():
         if len(str(data["telefono"])) > 15:
             return jsonify({"msg": "El teléfono es más largo de lo permitido"}), 400
 
-        existing_user = db.session.query(Usuario).filter(
+        existing_email = db.session.query(Usuario).filter(
             Usuario.email == data["email"]).first()
 
+        existing_user = db.session.query(Usuario).filter(
+            Usuario.usuario == data["usuario"]).first()
+
+        if existing_email:
+            return jsonify({"msg": "El usuario con este email ya existe"}), 401
+
         if existing_user:
-            return jsonify({"msg": "El usuario ya existe"}), 401
+            return jsonify({"msg": "El nombre de usuario ya existe ya existe"}), 401
 
         hashed_password = generate_password_hash(
             data["password"], method='pbkdf2:sha256')
         new_user = Usuario(
-            email=data["email"], password=hashed_password, telefono=data["telefono"])
+            email=data["email"], password=hashed_password, telefono=data["telefono"], usuario=data["usuario"])
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"msg": "Usuario Registrado Satisfactoriamente"}), 201
+
+        return jsonify({"id": new_user.id,  # Asumiendo que Usuario tiene un atributo 'id'
+                        "email": new_user.email,
+                        "telefono": new_user.telefono,
+                        "usuario": new_user.usuario}), 201
 
     except DataError as e:
         return jsonify({"msg": "Error en los datos ingresados"}), 500
@@ -75,7 +85,7 @@ def route_login():
     if "email" not in data or "password" not in data:
         return jsonify({"msg": "Falta el correo o la contraseña"}), 400
 
-    user = UserModel(0, data["email"], data["password"], 0)
+    user = UserModel(0, data["email"], data["password"], 0, 0)
     # Busca al usuario en la base de datos
     session = Session()
 
@@ -91,7 +101,7 @@ def route_login():
     if logged_user is None:
         return jsonify({"msg": "Contraseña incorrecta"}), 401
 
-    return jsonify({"msg": "Login perfecto", "user": logged_user.email, "telefono": logged_user.telefono, "id": logged_user.id}), 200
+    return jsonify({"msg": "Login perfecto", "email": logged_user.email, "telefono": logged_user.telefono, "id": logged_user.id, "usuario": logged_user.usuario}), 200
 
 
 @app.route('/add_comment', methods=['POST'])

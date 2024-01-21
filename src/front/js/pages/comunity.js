@@ -3,7 +3,7 @@ import Navbar from "../component/navBar";
 import Footer from "../component/footer";
 import Search from "../component/search";
 import CardComunity from "../component/cardComunity";
-import "../../styles/cardComunity.css"
+import "../../styles/cardComunity.css";
 
 const Comunity = () => {
   return (

@@ -6,7 +6,6 @@ import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../../../public/img/logo.png";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { Toaster, toast } from "sonner";
 
 function Navbar() {
   const { store, actions } = useContext(Context);
@@ -155,7 +154,7 @@ function Navbar() {
           </button>
         </div>
       </header>
-      <Toaster richColors />
+      
     </>
   );
 }

@@ -82,7 +82,7 @@ const LoginHome = () => {
           </ButtonAfter>
         </LoginPage>
       </div>
-      <Toaster richColors />
+      {/* <Toaster richColors /> */}
     </>
   );
 };

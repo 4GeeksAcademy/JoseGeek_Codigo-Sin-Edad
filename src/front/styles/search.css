@@ -21,7 +21,8 @@ body {
 }
 
 .search_flex_input {
-    width: 85% !important;
+    width: 100% !important;
+    margin-bottom: 1rem;
 }
 
 .search_flex_button {
