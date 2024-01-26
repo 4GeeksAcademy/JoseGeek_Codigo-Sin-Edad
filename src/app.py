@@ -25,9 +25,11 @@ migrate = Migrate(app, db)
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../public/')
 
+ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
+
 
 @app.route('/')
-def index():
+def sitemap():
     return send_from_directory(static_file_dir, 'index.html')
 
 
