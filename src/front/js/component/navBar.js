@@ -44,7 +44,7 @@ function Navbar() {
                   className="btn link btn_responsive_disabled"
                   href="#contactUs"
                 >
-                  Contácto
+                  Contacto
                 </Link>
                 <Link
                   className="btn link btn_responsive_disabled"
@@ -126,7 +126,9 @@ function Navbar() {
               </Link>
               <Link
                 style={{ margin: "0" }}
-                to={"#"}
+                to={
+                  "https://www.linkedin.com/in/jose-mar%C3%ADa-rodr%C3%ADguez-116328135/"
+                }
                 className="btn btn-primary"
               >
                 <FontAwesomeIcon icon={faLinkedinIn} />
@@ -154,7 +156,6 @@ function Navbar() {
           </button>
         </div>
       </header>
-      
     </>
   );
 }
