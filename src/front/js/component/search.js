@@ -1,10 +1,34 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/search.css";
 import ModalTheme from "./modalCreateTheme";
 import { Context } from "../store/appContext";
+import _ from "lodash";
 
 const Search = () => {
   const { store, actions } = useContext(Context);
+
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearch = (event) => {
+    setSearchInput(event.target.value);
+  };
+
+  useEffect(() => {
+    if (searchInput === "") {
+      actions.modificatedFilterTema(false);
+    }
+    filter();
+  }, [searchInput]);
+
+  const filter = () => {
+    let tem = store.temas;
+    if (Array.isArray(tem)) {
+      let filtrados = tem.filter((te) =>
+        te.titulo.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      actions.modificatedFilterTema(filtrados);
+    }
+  };
 
   return (
     <>
@@ -23,9 +47,10 @@ const Search = () => {
         <form className="search_flex" role="search">
           <input
             className="form-control me-2 search_flex_input bgSvg"
-            type="search"
-            placeholder="Buscar"
-            aria-label="Buscar"
+            type="text"
+            value={searchInput}
+            onChange={handleSearch}
+            placeholder="Buscar temas..."
           />
         </form>
         <button

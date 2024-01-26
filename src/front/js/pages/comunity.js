@@ -18,8 +18,26 @@ const Comunity = () => {
       <Navbar />
       <Search />
       <div className="cardComunity_container_general">
-        {store.temas ? (
-          store.temas.map((tema) => (
+        {!store.filterTema ? (
+          store.temas ? (
+            store.temas.map((tema) => (
+              <CardComunity
+                titulo={tema.titulo}
+                description={tema.contenido}
+                fecha={tema.fecha_creacion}
+                usuario={tema.nombre_usuario}
+                id={tema.id}
+                usuarioId={tema.usuario_id}
+                key={tema.id}
+              />
+            ))
+          ) : (
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          )
+        ) : (
+          store.filterTema.map((tema) => (
             <CardComunity
               titulo={tema.titulo}
               description={tema.contenido}
@@ -30,10 +48,6 @@ const Comunity = () => {
               key={tema.id}
             />
           ))
-        ) : (
-          <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
         )}
       </div>
       <Footer />

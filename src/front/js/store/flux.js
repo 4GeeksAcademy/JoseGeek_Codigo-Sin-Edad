@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       temas: false,
       temaEdit: false,
       modalEdit: false,
+      filterTema: false,
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -61,6 +62,10 @@ const getState = ({ getStore, getActions, setStore }) => {
             toast.success("Tema Eliminado satisfactoriamente");
           })
           .catch((err) => console.log(err));
+      },
+
+      modificatedFilterTema: async (cambio) => {
+        setStore({ filterTema: cambio });
       },
     },
   };
