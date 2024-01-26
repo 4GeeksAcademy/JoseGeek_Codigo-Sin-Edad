@@ -2,7 +2,7 @@
 import os
 from sqlalchemy.exc import DataError, IntegrityError
 from werkzeug.security import generate_password_hash
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from sqlalchemy.orm import Session
 from config import db
@@ -23,12 +23,13 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 
-@app.route("/")
-# @cross_origin()
-def home():
-    """Ruta principal de la aplicación."""
-    usuarios = Usuario.query.all()
-    return str(usuarios)
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(os.path.join(app.root_path, path)):
+        return send_from_directory(app.root_path, path)
+    else:
+        return send_from_directory(app.root_path, 'template.html')
 
 
 @app.route('/register', methods=['POST'])

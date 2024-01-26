@@ -1,0 +1,188 @@
+- .devcontainer
+  - devcontainer.json
+  - docker-compose.yml
+  - Dockerfile
+- .env
+- .env.example
+- .eslintrc
+- .github
+  - settings.yml
+- .gitignore
+- .gitpod.Dockerfile
+- .gitpod.yml
+- .venv
+  - Include
+    - site
+      - python3.12
+        - greenlet
+          - greenlet.h
+  - Lib
+  - pyvenv.cfg
+  - Scripts
+    - activate
+    - activate.bat
+    - Activate.ps1
+    - alembic.exe
+    - deactivate.bat
+    - dotenv.exe
+    - flask.exe
+    - flaskswagger.exe
+    - gunicorn.exe
+    - mako-render.exe
+    - pip.exe
+    - pip3.12.exe
+    - pip3.exe
+    - pipenv-resolver.exe
+    - pipenv.exe
+    - python.exe
+    - pythonw.exe
+    - virtualenv.exe
+    - waitress-serve.exe
+  - src
+- 4geeks.ico
+- database.sh
+- dist
+  - index.html
+- docker-compose-post.yml
+- docker-compose.yml
+- Dockerfile.render
+- docs
+  - assets
+    - db_config.gif
+    - debugging.gif
+    - debugging_icon.png
+    - diagram.png
+    - env-file.png
+    - env_variables.gif
+    - greeting.py
+    - reset_migrations.bash
+    - rigo-baby.jpg
+  - CHANGE_LOG.md
+  - HELP.md
+- Esquema.pdf
+- migrations
+  - alembic.ini
+  - env.py
+  - README
+  - script.py.mako
+  - versions
+    - 725279468bf9_creando_database.py
+    - __pycache__
+      - 725279468bf9_creando_database.cpython-312.pyc
+  - __pycache__
+    - env.cpython-312.pyc
+- package-lock.json
+- package.json
+- Pipfile
+- Pipfile.lock
+- Procfile
+- public
+  - 4geeks.ico
+  - bundle.js
+  - bundle.js.LICENSE.txt
+  - img
+    - aboutme.jpg
+    - aboutmeBackground.jpg
+    - card_1.png
+    - card_2.png
+    - card_3.png
+    - hop_pop_1.png
+    - hop_pop_2.png
+    - Logo-2.jpg
+    - logo.png
+  - index.html
+  - rigo-baby.jpg
+- pycodestyle.cfg
+- README.md
+- render.yaml
+- render_build.sh
+- requirements.txt
+- src
+  - api
+    - entities
+      - user_entities.py
+      - __init__.py
+      - __pycache__
+        - user_entities.cpython-312.pyc
+        - __init__.cpython-312.pyc
+    - models.py
+    - services
+      - login_authentication.py
+      - __init__.py
+      - __pycache__
+        - login_authentication.cpython-312.pyc
+        - usuarios.cpython-312.pyc
+        - __init__.cpython-312.pyc
+    - services_original.py
+    - __init__.py
+    - __pycache__
+      - database.cpython-312.pyc
+      - models.cpython-312.pyc
+      - services.cpython-312.pyc
+      - services_original.cpython-312.pyc
+      - __init__.cpython-312.pyc
+  - app.py
+  - config.py
+  - front
+    - img
+      - facebook.svg
+      - github.svg
+      - linkedin.svg
+    - js
+      - component
+        - aboutMe.js
+        - button.js
+        - card.js
+        - cardComunity.js
+        - contactUs.js
+        - footer.js
+        - headerSection.js
+        - invitation.js
+        - modal.js
+        - modalCreateTheme.js
+        - navBar.js
+        - protectedRoute.js
+        - protectedRouteLogin.js
+        - recomendationMe.js
+        - recomendationYou.js
+        - search.js
+      - hooks
+        - useFormContactUs.js
+        - useFormCreateTheme.js
+        - useFormHook.js
+        - useFormLogin.js
+        - useFormRegister.js
+      - index.js
+      - layout.js
+      - pages
+        - comunity.js
+        - home.js
+        - login.js
+        - register.js
+      - store
+        - appContext.js
+        - flux.js
+    - styles
+      - aboutMe.css
+      - button.css
+      - cardComunity.css
+      - cards.css
+      - contacUs.css
+      - customModal.css
+      - footer.css
+      - headerSection.css
+      - invitation.css
+      - login.css
+      - modal.css
+      - navBar.css
+      - recomendationMe.css
+      - recomendationYou.css
+      - search.css
+  - wsgi.py
+  - __pycache__
+    - app.cpython-312.pyc
+    - config.cpython-312.pyc
+- template.html
+- webpack.common.js
+- webpack.dev.js
+- webpack.prod.js
