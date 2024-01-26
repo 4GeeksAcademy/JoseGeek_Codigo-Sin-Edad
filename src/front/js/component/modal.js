@@ -51,7 +51,7 @@ const Modal = ({ closeModal, children, description, temaId, usuarioId }) => {
       body: JSON.stringify({
         contenido: comentario,
         tema_id: temaId,
-        usuario_id: usuarioId,
+        usuario_id: store.dataUser.id,
       }),
     })
       .then((resp) => resp.json())
@@ -149,7 +149,7 @@ const Modal = ({ closeModal, children, description, temaId, usuarioId }) => {
                   {formatearFechaPublicacion(item.fecha_creacion)}
                 </p>
                 <p style={{ marginBottom: "0" }}>{item.contenido}</p>
-                {permitdEditComent && (
+                {(permitdEditComent || store.dataUser.es_admin) && (
                   <div
                     style={{ display: "flex", gap: "1rem", margin: "1rem 0" }}
                   >

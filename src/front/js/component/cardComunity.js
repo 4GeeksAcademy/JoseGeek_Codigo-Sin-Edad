@@ -81,7 +81,7 @@ const CardComunity = ({
             </p>
           </div>
         </Link>
-        {permitidEdit && (
+        {(permitidEdit || store.dataUser.es_admin) && (
           <div className="buttonsFlex">
             <button
               onClick={enviarInfoEditar}

@@ -71,7 +71,7 @@ function Navbar() {
                   className="btn link btn_responsive_disabled"
                   href="#contactUs"
                 >
-                  Contácto
+                  Contacto
                 </a>
                 <a className="btn link btn_responsive_disabled" href="#aboutMe">
                   Sobre mi
@@ -114,7 +114,7 @@ function Navbar() {
               Mis Recomendaciones
             </Link>
             <Link className="btn link btn_responsive" href="#contactUs">
-              Contácto
+              Contacto
             </Link>
             <div className="btns">
               <Link

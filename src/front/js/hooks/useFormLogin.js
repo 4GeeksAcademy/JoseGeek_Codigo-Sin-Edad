@@ -54,6 +54,7 @@ export const useFormLogin = (store, actions) => {
           telefono: data.telefono,
           email: data.email,
           usuario: data.usuario,
+          es_admin: data.es_admin,
         });
         if (store.dataUser.id) {
           navigate("/comunity");
@@ -65,6 +66,7 @@ export const useFormLogin = (store, actions) => {
             telefono: data.telefono,
             email: data.email,
             usuario: data.usuario,
+            es_admin: data.es_admin,
           })
         );
       })

@@ -20,6 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       loguot: () => {
         localStorage.removeItem("user");
         setStore({ dataUser: null });
+        setStore({ temas: false });
+        setStore({ comentsAll: false });
         toast.info("Se cierra sesión con exito");
       },
       temasList: async () => {
@@ -89,6 +91,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       resetComentEdit: async () => {
         setStore({ comentsEdit: "" });
+      },
+
+      resetTemas: async () => {
+        setStore({ temas: false });
+      },
+
+      resetComents: async () => {
+        setStore({ comentsAll: false });
       },
     },
   };

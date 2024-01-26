@@ -85,7 +85,7 @@ def route_login():
     if "email" not in data or "password" not in data:
         return jsonify({"msg": "Falta el correo o la contraseña"}), 400
 
-    user = UserModel(0, data["email"], data["password"], 0, 0)
+    user = UserModel(0, data["email"], data["password"], 0, 0, 0)
     # Busca al usuario en la base de datos
     session = Session()
 
@@ -101,7 +101,7 @@ def route_login():
     if logged_user is None:
         return jsonify({"msg": "Contraseña incorrecta"}), 401
 
-    return jsonify({"msg": "Login perfecto", "email": logged_user.email, "telefono": logged_user.telefono, "id": logged_user.id, "usuario": logged_user.usuario}), 200
+    return jsonify({"msg": "Login perfecto", "email": logged_user.email, "telefono": logged_user.telefono, "id": logged_user.id, "usuario": logged_user.usuario, "es_admin": logged_user.es_admin}), 200
 
 
 @app.route('/add_comment', methods=['POST'])
@@ -194,7 +194,12 @@ def update_comment(comentario_id):
         if not comentario:
             return jsonify({"msg": "Comentario no encontrado"}), 404
 
-        if comentario.usuario_id != data.get("usuario_id"):
+        usuario_actual = Usuario.query.get(data.get("usuario_id"))
+
+        if not usuario_actual:
+            return jsonify({"msg": "Usuario no encontrado"}), 404
+
+        if comentario.usuario_id != data.get("usuario_id") and not usuario_actual.es_admin:
             return jsonify({"msg": "No autorizado para actualizar este comentario"}), 403
 
         comentario.contenido = data.get("contenido", comentario.contenido)
@@ -216,10 +221,13 @@ def delete_comment(comentario_id):
 
         user_id = request.json.get("usuario_id")
         user = Usuario.query.get(user_id)
-        if not user or (comentario.usuario_id != user_id and not user.es_admin):
+        if not user:
+            return jsonify({"msg": "Usuario no encontrado"}), 404
+
+        # Permitir que los administradores o el propio usuario eliminen el comentario
+        if comentario.usuario_id != user_id and not user.es_admin:
             return jsonify({"msg": "No autorizado para eliminar este comentario"}), 403
 
-        # Eliminar el comentario (soft delete)
         comentario.activo = False
         db.session.commit()
 
@@ -300,7 +308,12 @@ def update_tema(tema_id):
         if not tema:
             return jsonify({"msg": "Tema no encontrado"}), 404
 
-        if tema.usuario_id != data["usuario_id"]:
+        usuario_actual = Usuario.query.get(data.get("usuario_id"))
+        if not usuario_actual:
+            return jsonify({"msg": "Usuario no encontrado"}), 404
+
+        # Permitir que los administradores o el propio usuario actualicen el tema
+        if tema.usuario_id != usuario_actual.id and not usuario_actual.es_admin:
             return jsonify({"msg": "No autorizado para actualizar este tema"}), 403
 
         tema.titulo = data.get("titulo", tema.titulo)
@@ -323,7 +336,11 @@ def delete_tema(tema_id):
 
         user_id = request.json.get("usuario_id")
         user = Usuario.query.get(user_id)
-        if not user or (tema.usuario_id != user_id and not user.es_admin):
+        if not user:
+            return jsonify({"msg": "Usuario no encontrado"}), 404
+
+        # Permitir que los administradores o el propio usuario eliminen el tema
+        if tema.usuario_id != user_id and not user.es_admin:
             return jsonify({"msg": "No autorizado para eliminar este tema"}), 403
 
         # Soft delete
