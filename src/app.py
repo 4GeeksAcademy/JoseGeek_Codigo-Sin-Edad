@@ -16,7 +16,7 @@ from api.entities.user_entities import UserModel
 app = Flask(__name__)
 # CORS(app, resources={r"/api/*": {"origins": "*"}}) # Solititudes de cualquier origen al path de api
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:jose@localhost:3306/comunidad_geek'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:jose@localhost:5432/comunidad_geek'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
