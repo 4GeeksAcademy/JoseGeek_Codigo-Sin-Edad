@@ -23,13 +23,12 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    if path != "" and os.path.exists(os.path.join(app.root_path, path)):
-        return send_from_directory(app.root_path, path)
-    else:
-        return send_from_directory(app.root_path, 'template.html')
+app.static_folder = 'public'  # Define la carpeta de archivos estáticos
+
+
+@app.route('/')
+def index():
+    return send_from_directory(app.static_folder, 'index.html')
 
 
 @app.route('/register', methods=['POST'])
