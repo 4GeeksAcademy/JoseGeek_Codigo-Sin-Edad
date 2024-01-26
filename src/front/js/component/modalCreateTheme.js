@@ -8,17 +8,20 @@ import { useFormCreateTheme } from "../hooks/useFormCreateTheme";
 const ModalTheme = ({ closeModal }) => {
   const { store, actions } = useContext(Context);
 
-  const {
-    description,
-    title,
-    onInputChange,
-    onResetForm,
-    handleSubmitCreateTheme,
-  } = useFormCreateTheme(store, actions, closeModal);
+  const { description, title, onInputChange, onResetForm, update } =
+    useFormCreateTheme(store, actions, closeModal);
 
-  const handleCardClick = () => {
+  const handleCardClickSave = () => {
     closeModal();
     onResetForm();
+    actions.temaEditFalse();
+  };
+
+  const handleCardClickUpdate = () => {
+    update();
+    closeModal();
+    onResetForm();
+    actions.temaEditFalse();
   };
 
   return (
@@ -28,7 +31,7 @@ const ModalTheme = ({ closeModal }) => {
           <div></div>
           <FontAwesomeIcon
             className="modal_close"
-            onClick={handleCardClick}
+            onClick={handleCardClickSave}
             icon={faXmark}
           />
         </div>
@@ -62,11 +65,13 @@ const ModalTheme = ({ closeModal }) => {
             ></textarea>
           </div>
           <button
-            onClick={handleSubmitCreateTheme}
+            onClick={
+              store.temaEdit ? handleCardClickUpdate : handleCardClickSave
+            }
             type="button"
             className="btn btn-success"
           >
-            Crear tema
+            {store.temaEdit ? "Guardar tema" : "Crear tema"}
           </button>
         </form>
       </div>

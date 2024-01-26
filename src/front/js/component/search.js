@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/search.css";
 import ModalTheme from "./modalCreateTheme";
+import { Context } from "../store/appContext";
 
 const Search = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { store, actions } = useContext(Context);
 
-  const handleCardClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
   return (
     <>
-      {isModalOpen && <ModalTheme closeModal={closeModal} />}
+      {store.modalEdit && <ModalTheme closeModal={actions.modalFalse} />}
       <div className="search">
         <h2 className="search_title">Comunidad</h2>
         <p className="search_paragraph">
@@ -35,7 +29,7 @@ const Search = () => {
           />
         </form>
         <button
-          onClick={handleCardClick}
+          onClick={actions.modalTrue}
           className="btn btn-outline-success search_flex_button"
         >
           Ingresar nuevo tema

@@ -35,11 +35,20 @@ export const useFormHook = (initialForm = {}, validations = {}) => {
     setErrors({});
   };
 
+  const editForm = (nameTitle, nameDescription) => {
+    setFormState({
+      ...formState,
+      [nameTitle.target.name]: nameTitle.target.value,
+      [nameDescription.target.name]: nameDescription.target.value,
+    });
+  };
+
   return {
     ...formState,
     formState,
     errors,
     onInputChange,
     onResetForm,
+    editForm,
   };
 };

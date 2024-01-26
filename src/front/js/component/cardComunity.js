@@ -1,13 +1,46 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/cardComunity.css";
 import { Link } from "react-router-dom";
 import Modal from "./modal";
+import { Context } from "../store/appContext";
 
-const CardComunity = () => {
+const CardComunity = ({
+  titulo,
+  description,
+  fecha,
+  usuario,
+  usuarioId,
+  id,
+}) => {
+  const { store, actions } = useContext(Context);
+
+  const permitidEdit = store.dataUser.id === usuarioId;
+
+  function formatearFechaPublicacion(fecha) {
+    const fechaPublicacion = new Date(fecha);
+    const fechaActual = new Date();
+
+    const diferenciaHoras = Math.floor(
+      (fechaActual - fechaPublicacion) / (1000 * 60 * 60)
+    );
+
+    if (diferenciaHoras < 1) {
+      return "Publicado hace menos de 1 hora";
+    } else if (diferenciaHoras === 1) {
+      return "Publicado hace 1 hora";
+    } else {
+      return `Publicado hace ${diferenciaHoras} horas`;
+    }
+  }
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCardClick = () => {
     setIsModalOpen(true);
+  };
+
+  const enviarInfoEditar = () => {
+    actions.temaEdit({ id, titulo, description, fecha, usuario, usuarioId });
   };
 
   const closeModal = () => {
@@ -16,33 +49,47 @@ const CardComunity = () => {
   return (
     <>
       {isModalOpen && (
-        <Modal closeModal={closeModal}>
+        <Modal closeModal={closeModal} description={description}>
           <p className="cardComunity_modal">
-            Titulo{" "}
+            {titulo}
             <span className="cardComunity_modal_title">
-              Fecha de publicacion
+              {formatearFechaPublicacion(fecha)}
             </span>
           </p>
         </Modal>
       )}
-      <Link onClick={handleCardClick} className="cardComunity" to={"#"}>
-        <p className="cardComunity_paragraph">
-          <span className="cardComunity_paragraph_author">Erik Acosta</span>
-          Publicado hace 22 h
-        </p>
-        <h3 className="cardComunity_title">React o Flutter</h3>
-        <div className="cardComunity_descriptionTheme">
-          <p className="cardComunity_descriptionTheme_paragraph">
-            Explora un universo de oportunidades y experiencias inolvidables que
-            te esperan a la vuelta de la esquina. Desde aventuras emocionantes
-            hasta momentos de relajación y reflexión, nuestro destino te brinda
-            la oportunidad de vivir la vida al máximo. Únete a nosotros en un
-            viaje inolvidable donde cada día es una nueva aventura y cada rincón
-            es una historia por descubrir. Bienvenido a un mundo de
-            posibilidades infinitas.
+      <div>
+        <Link onClick={handleCardClick} className="cardComunity" to={"#"}>
+          <p className="cardComunity_paragraph">
+            <span className="cardComunity_paragraph_author">{usuario}</span>
+            {formatearFechaPublicacion(fecha)}
           </p>
-        </div>
-      </Link>
+          <h3 className="cardComunity_title">{titulo}</h3>
+          <div className="cardComunity_descriptionTheme">
+            <p className="cardComunity_descriptionTheme_paragraph">
+              {description}
+            </p>
+          </div>
+        </Link>
+        {permitidEdit && (
+          <div className="buttonsFlex">
+            <button
+              onClick={enviarInfoEditar}
+              type="button"
+              className="btn btn-outline-primary"
+            >
+              Editar
+            </button>
+            <button
+              onClick={() => actions.deleteTema(id, store.dataUser.id)}
+              type="button"
+              className="btn btn-outline-danger"
+            >
+              Eliminar
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 };

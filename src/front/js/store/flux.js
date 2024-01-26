@@ -4,7 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       dataUser: null,
-      temas: null,
+      temas: false,
+      temaEdit: false,
+      modalEdit: false,
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -18,38 +20,45 @@ const getState = ({ getStore, getActions, setStore }) => {
         toast.info("Se cierra sesión con exito");
       },
       temasList: async () => {
-        fetch(process.env.REACT_APP_REGISTER, {
-          method: "POST",
+        fetch(process.env.REACT_APP_LIST_TEMAS, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            setStore({ temas: data });
+          })
+          .catch((err) => console.log(err));
+      },
+      modalTrue: async () => {
+        setStore({ modalEdit: true });
+      },
+      modalFalse: async () => {
+        setStore({ modalEdit: false });
+      },
+      temaEdit: async (dataEdit) => {
+        setStore({ temaEdit: dataEdit });
+        setStore({ modalEdit: true });
+      },
+
+      temaEditFalse: async () => {
+        setStore({ temaEdit: false });
+      },
+      deleteTema: async (idTema, idUser) => {
+        await fetch(`${process.env.REACT_APP_DELETE_TEMA}${idTema}`, {
+          method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: user,
-            password: password,
-            telefono: telefono,
+            usuario_id: idUser,
           }),
         })
           .then((resp) => resp.json())
           .then((data) => {
-            if (data.msg === "El usuario ya existe") {
-              toast.error("El usuario ya existe");
-            }
-            actions.dataUserUpdate({
-              id: data.id,
-              telefono: data.telefono,
-              user: data.user,
-            });
-            if (store.dataUser.id) {
-              navigate("/comunity");
-            }
-            localStorage.setItem(
-              "user",
-              JSON.stringify({
-                id: data.id,
-                telefono: data.telefono,
-                user: data.user,
-              })
-            );
+            toast.success("Tema Eliminado satisfactoriamente");
           })
           .catch((err) => console.log(err));
       },

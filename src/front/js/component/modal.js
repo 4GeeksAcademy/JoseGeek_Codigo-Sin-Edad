@@ -3,7 +3,7 @@ import "../../styles/modal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const Modal = ({ closeModal, children }) => {
+const Modal = ({ closeModal, children, description }) => {
   return (
     <div className="modal-backdrop">
       <div className="modal-content">
@@ -15,11 +15,7 @@ const Modal = ({ closeModal, children }) => {
             icon={faXmark}
           />
         </div>
-        <p className="modal_paragraph">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-          mollitia non aut at ad fuga beatae suscipit eum quos dolore, autem
-          ducimus! Quia, culpa. Repellat modi ipsa voluptate est facere!
-        </p>
+        <p className="modal_paragraph">{description}</p>
         <div
           style={{
             border: ".2rem solid #29335c",

@@ -229,11 +229,16 @@ def delete_comment(comentario_id):
 @app.route('/temas', methods=['GET'])
 def get_temas():
     try:
-        temas = Tema.query.filter_by(activo=True).all()
+        temas = Tema.query.join(Usuario).filter(Tema.activo == True).all()
         temas_list = [
-            {"id": tema.id, "titulo": tema.titulo, "contenido": tema.contenido,
-             "fecha_creacion": tema.fecha_creacion.strftime('%Y-%m-%d %H:%M:%S'),
-             "usuario_id": tema.usuario_id}
+            {
+                "id": tema.id,
+                "titulo": tema.titulo,
+                "contenido": tema.contenido,
+                "fecha_creacion": tema.fecha_creacion.strftime('%Y-%m-%d %H:%M:%S'),
+                "usuario_id": tema.usuario_id,
+                "nombre_usuario": tema.usuario.usuario  # Obtén el nombre de usuario
+            }
             for tema in temas
         ]
 
