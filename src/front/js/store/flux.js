@@ -8,6 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       temaEdit: false,
       modalEdit: false,
       filterTema: false,
+      comentsAll: false,
+      comentsEdit: "",
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -66,6 +68,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       modificatedFilterTema: async (cambio) => {
         setStore({ filterTema: cambio });
+      },
+
+      comentsAlls: async () => {
+        fetch(process.env.REACT_APP_LIST_COMENTS, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            setStore({ comentsAll: data });
+          })
+          .catch((err) => console.log(err));
+      },
+
+      comentEdit: async (dataEdit) => {
+        setStore({ comentsEdit: dataEdit });
+      },
+      resetComentEdit: async () => {
+        setStore({ comentsEdit: "" });
       },
     },
   };

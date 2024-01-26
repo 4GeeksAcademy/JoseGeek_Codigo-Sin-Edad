@@ -11,6 +11,7 @@ const Comunity = () => {
 
   useEffect(() => {
     actions.temasList();
+    actions.comentsAlls();
   }, []);
 
   return (

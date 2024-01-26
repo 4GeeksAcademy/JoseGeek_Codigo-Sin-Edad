@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/cardComunity.css";
 import { Link } from "react-router-dom";
 import Modal from "./modal";
@@ -43,13 +43,23 @@ const CardComunity = ({
     actions.temaEdit({ id, titulo, description, fecha, usuario, usuarioId });
   };
 
+  const eliminarTema = (id) => {
+    actions.deleteTema(id, store.dataUser.id);
+    actions.temasList();
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
   return (
     <>
       {isModalOpen && (
-        <Modal closeModal={closeModal} description={description}>
+        <Modal
+          closeModal={closeModal}
+          description={description}
+          temaId={id}
+          usuarioId={usuarioId}
+        >
           <p className="cardComunity_modal">
             {titulo}
             <span className="cardComunity_modal_title">
@@ -81,7 +91,7 @@ const CardComunity = ({
               Editar
             </button>
             <button
-              onClick={() => actions.deleteTema(id, store.dataUser.id)}
+              onClick={() => eliminarTema(id)}
               type="button"
               className="btn btn-outline-danger"
             >

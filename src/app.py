@@ -147,9 +147,12 @@ def get_comments():
         comentarios = Comentario.query.filter_by(activo=True).all()
 
         comentarios_list = [
-            {"id": comentario.id, "contenido": comentario.contenido,
+            {"id": comentario.id,
+             "contenido": comentario.contenido,
              "fecha_creacion": comentario.fecha_creacion.strftime('%Y-%m-%d %H:%M:%S'),
-             "usuario_id": comentario.usuario_id, "tema_id": comentario.tema_id}
+             "usuario_id": comentario.usuario_id,
+             "usuario": comentario.usuario.usuario,  # Accediendo al nombre de usuario
+             "tema_id": comentario.tema_id}
             for comentario in comentarios
         ]
 

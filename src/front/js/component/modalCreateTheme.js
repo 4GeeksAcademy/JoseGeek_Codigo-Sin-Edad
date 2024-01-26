@@ -8,19 +8,28 @@ import { useFormCreateTheme } from "../hooks/useFormCreateTheme";
 const ModalTheme = ({ closeModal }) => {
   const { store, actions } = useContext(Context);
 
-  const { description, title, onInputChange, onResetForm, update } =
-    useFormCreateTheme(store, actions, closeModal);
+  const {
+    description,
+    title,
+    onInputChange,
+    onResetForm,
+    update,
+    handleSubmitCreateTheme,
+  } = useFormCreateTheme(store, actions, closeModal);
 
   const handleCardClickSave = () => {
+    handleSubmitCreateTheme();
     closeModal();
     onResetForm();
     actions.temaEditFalse();
+    actions.temasList();
   };
 
   const handleCardClickUpdate = () => {
     update();
     closeModal();
     onResetForm();
+    actions.temasList();
     actions.temaEditFalse();
   };
 
@@ -45,7 +54,6 @@ const ModalTheme = ({ closeModal }) => {
               name="title"
               type="email"
               className="form-control"
-              id="title"
               placeholder="Titulo del tema"
               value={title}
             />
@@ -59,7 +67,6 @@ const ModalTheme = ({ closeModal }) => {
               value={description}
               name="description"
               className="form-control"
-              id="description"
               rows="3"
               placeholder="Descripción del tema"
             ></textarea>
