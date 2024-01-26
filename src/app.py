@@ -22,13 +22,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 migrate = Migrate(app, db)
 
-
-app.static_folder = 'public'  # Define la carpeta de archivos estáticos
+static_file_dir = os.path.join(os.path.dirname(
+    os.path.realpath(__file__)), '../public/')
 
 
 @app.route('/')
 def index():
-    return send_from_directory(app.static_folder, 'index.html')
+    return send_from_directory(static_file_dir, 'index.html')
 
 
 @app.route('/register', methods=['POST'])
