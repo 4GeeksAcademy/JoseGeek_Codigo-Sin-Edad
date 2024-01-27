@@ -18,14 +18,9 @@ const PasswordRecovery = () => {
       },
       body: JSON.stringify({ email: email }),
     })
-      .then((response) => {
-        if (!response.ok) {
-          // Si el servidor responde con un código de error, lanzar un error
-          throw new Error(`Error del servidor: ${response.status}`);
-        }
-        return response.json();
-      })
+      .then((response) => resp.json())
       .then((data) => {
+        console.log(data);
         if (data.msg === "Usuario no encontrado") {
           toast.error("El usuario no existe");
         } else {
