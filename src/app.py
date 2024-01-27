@@ -137,7 +137,7 @@ def forgot_password():
         # Configurar servidor SMTP
         s = smtplib.SMTP('smtp.gmail.com', 587)
         s.starttls()
-        s.login('comunidadgeek78@gmail.com', 'comunidad28004')
+        s.login('comunidadgeek78@gmail.com', 'fxkh pcpn yiop nlgh')
         s.sendmail('comunidadgeek78@gmail.com', [email], msg.as_string())
         s.quit()
     except Exception as e:
