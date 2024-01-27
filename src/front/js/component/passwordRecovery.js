@@ -18,7 +18,7 @@ const PasswordRecovery = () => {
       },
       body: JSON.stringify({ email: email }),
     })
-      .then((response) => resp.json())
+      .then((response) => response.json())
       .then((data) => {
         console.log(data);
         if (data.msg === "Usuario no encontrado") {
