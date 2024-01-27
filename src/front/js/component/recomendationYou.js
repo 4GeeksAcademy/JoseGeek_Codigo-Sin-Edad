@@ -21,7 +21,7 @@ const RecomendationYou = () => {
         tienen algo valioso que aportar.
       </p>
       <div style={{ marginTop: "1rem" }} className="div_button">
-        <Link to={"/login"} className="recomendationYou_button">
+        <Link to={"/register"} className="recomendationYou_button">
           Registrarme
         </Link>
       </div>

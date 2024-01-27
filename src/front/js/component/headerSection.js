@@ -28,7 +28,7 @@ const HeaderSection = () => {
               este apasionante mundo de la programación, donde nunca dejarás de
               aprender!
             </p>
-            <Button text={"Registrarse"} enlace={"/login"} />
+            <Button text={"Registrarse"} enlace={"/register"} />
           </div>
           <img
             className="headerSection_flex_img"
