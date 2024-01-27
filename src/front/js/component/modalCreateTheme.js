@@ -25,6 +25,12 @@ const ModalTheme = ({ closeModal }) => {
     actions.temasList();
   };
 
+  const closeModalTheme = () => {
+    actions.modalFalse();
+    onResetForm();
+    actions.temaEditFalse();
+  };
+
   const handleCardClickUpdate = () => {
     update();
     closeModal();
@@ -40,7 +46,7 @@ const ModalTheme = ({ closeModal }) => {
           <div></div>
           <FontAwesomeIcon
             className="modal_close"
-            onClick={handleCardClickSave}
+            onClick={closeModalTheme}
             icon={faXmark}
           />
         </div>

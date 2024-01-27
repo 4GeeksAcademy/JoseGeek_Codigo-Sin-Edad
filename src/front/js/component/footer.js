@@ -13,7 +13,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="footer-icons">
-          <Link href="{LINKEDIN_LINK}">
+          <Link to="https://www.linkedin.com/in/jose-mar%C3%ADa-rodr%C3%ADguez-116328135/">
             <FaLinkedin />
           </Link>
           <Link to="https://github.com/JoseGeek78">

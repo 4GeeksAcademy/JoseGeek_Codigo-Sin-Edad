@@ -78,7 +78,7 @@ const LoginHome = () => {
           </Reset>
           <Title visible={false} />
           <ButtonAfter>
-            Olvido el <a href="#">Usuario / Contraseña?</a>
+            Olvidó el <a href="#">Usuario / Contraseña?</a>
           </ButtonAfter>
         </LoginPage>
       </div>

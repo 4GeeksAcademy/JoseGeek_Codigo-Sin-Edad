@@ -6,7 +6,11 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from sqlalchemy.orm import Session
 from config import db
+import secrets
+import string
 from flask_migrate import Migrate
+import smtplib
+from email.mime.text import MIMEText
 from api.models import Usuario, Comentario, Tema
 from api.services_original import crear_usuario
 from api.services.login_authentication import UserAuthetication
@@ -49,7 +53,7 @@ def register():
     try:
         data = request.json
         if "email" not in data or "password" not in data or "telefono" not in data or "usuario" not in data:
-            return jsonify({"msg": "Faltan datos de email, password o teléfono"}), 400
+            return jsonify({"msg": "Faltan datos de email, password, usuario o teléfono"}), 400
 
         if len(data["email"]) > 255:
             return jsonify({"msg": "El email es más largo de lo permitido"}), 400
@@ -90,6 +94,56 @@ def register():
 
     except Exception as e:
         return jsonify({"msg": "Error en codigo: {}".format(e)}), 500
+
+
+def generate_random_password(length):
+    if length < 8:  # Asegúrate de que la longitud de la contraseña sea suficiente para la seguridad
+        raise ValueError("La contraseña debe tener al menos 8 caracteres")
+
+    alphabet = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(secrets.choice(alphabet) for i in range(length))
+    return password
+
+
+@app.route('/forgot_password', methods=['POST'])
+def forgot_password():
+    data = request.json
+    email = data.get("email")
+    if not email:
+        return jsonify({"msg": "Email es requerido"}), 400
+
+    user = Usuario.query.filter_by(email=email).first()
+    if not user:
+        return jsonify({"msg": "Usuario no encontrado"}), 404
+
+    # Generar nueva contraseña
+    # Aquí deberías generar una contraseña segura
+    new_password = generate_random_password(12)
+    hashed_password = generate_password_hash(
+        new_password, method='pbkdf2:sha256')
+
+    # Actualizar contraseña en la base de datos
+    user.password = hashed_password
+    db.session.commit()
+
+    # Enviar correo con nueva contraseña
+    try:
+        msg = MIMEText(
+            f"Has solicitado cambiar tu contraseña. Tu nueva contraseña es: {new_password}")
+        msg['Subject'] = "Recuperación de Contraseña"
+        msg['From'] = 'geekcomunity@geek.com'
+        msg['To'] = email
+
+        # Configurar servidor SMTP
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.starttls()
+        s.login('comunidadgeek78@gmail.com', 'comunidad28004')
+        s.sendmail('comunidadgeek78@gmail.com', [email], msg.as_string())
+        s.quit()
+    except Exception as e:
+        return jsonify({"msg": f"Error al enviar correo: {e}"}), 500
+
+    return jsonify({"msg": "Se ha enviado una nueva contraseña a tu correo"}), 200
 
 
 @app.route("/login", methods=["POST"])
