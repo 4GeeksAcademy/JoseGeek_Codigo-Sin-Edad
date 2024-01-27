@@ -22,10 +22,9 @@ const PasswordRecovery = () => {
       .then((data) => {
         console.log(data);
         if (data.msg === "Usuario no encontrado") {
-          toast.error("El usuario no existe");
-        } else {
-          toast.success("Correo enviado satisfactoriamente");
+          return toast.error("El usuario no existe");
         }
+        toast.success("Correo enviado satisfactoriamente");
       })
       .catch((err) => {
         console.error(err);
