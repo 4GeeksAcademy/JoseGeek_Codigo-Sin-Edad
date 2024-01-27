@@ -11,24 +11,31 @@ const PasswordRecovery = () => {
   };
 
   const handleSubmit = () => {
-    //REACT_APP_FORWOUD
     fetch(process.env.REACT_APP_FORWOUD, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email: email,
-      }),
+      body: JSON.stringify({ email: email }),
     })
-      .then((resp) => resp.json())
+      .then((response) => {
+        if (!response.ok) {
+          // Si el servidor responde con un código de error, lanzar un error
+          throw new Error(`Error del servidor: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         if (data.msg === "Usuario no encontrado") {
-          return toast.error("El usuario no existe");
+          toast.error("El usuario no existe");
+        } else {
+          toast.success("Correo enviado satisfactoriamente");
         }
-        toast.success("Correo enviado satisfactoriamente");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        toast.error("Ocurrió un error al procesar la solicitud");
+      });
   };
 
   return (
