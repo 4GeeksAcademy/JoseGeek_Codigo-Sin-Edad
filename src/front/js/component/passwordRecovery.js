@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
+import logo from "../../../../public/img/logo.png";
+import { Link } from "react-router-dom";
 
 const PasswordRecovery = () => {
   const [email, setEmail] = useState("");
@@ -30,22 +32,27 @@ const PasswordRecovery = () => {
   };
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{ height: "100vh" }}
-    >
-      <div className="text-center" style={{ width: "25rem" }}>
-        <input
-          type="email"
-          className="form-control form-control-lg"
-          placeholder="Ingresa tu correo a recuperar"
-          value={email}
-          onChange={handleInputChange}
-          style={{ marginBottom: "10px" }}
-        />
-        <button className="btn btn-primary" onClick={handleSubmit}>
-          Recuperar Contraseña
-        </button>
+    <div style={{ margin: "1rem" }}>
+      <Link to={"/"}>
+        <img className="logo" src={logo} alt="logo" />
+      </Link>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "90vh" }}
+      >
+        <div className="text-center" style={{ width: "25rem" }}>
+          <input
+            type="email"
+            className="form-control form-control-lg"
+            placeholder="Ingresa tu correo a recuperar"
+            value={email}
+            onChange={handleInputChange}
+            style={{ marginBottom: "10px" }}
+          />
+          <button className="btn btn-primary" onClick={handleSubmit}>
+            Recuperar Contraseña
+          </button>
+        </div>
       </div>
     </div>
   );
