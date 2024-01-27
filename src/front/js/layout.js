@@ -8,6 +8,7 @@ import Register from "./pages/register";
 import Comunity from "./pages/comunity";
 import ProtectedRoute from "./component/protectedRoute";
 import ProtectedRouteLogin from "./component/protectedRouteLogin";
+import PasswordRecovery from "./component/passwordRecovery";
 
 const Layout = () => {
   const { store, actions } = useContext(Context);
@@ -51,6 +52,12 @@ const Layout = () => {
               </ProtectedRoute>
             }
             path="/comunity"
+          />
+          <Route
+            element={
+                <PasswordRecovery />
+            }
+            path="/recovery"
           />
           <Route path="*" element={<Home />} />
         </Routes>

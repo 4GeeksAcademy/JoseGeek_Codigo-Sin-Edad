@@ -25,7 +25,7 @@ const RecomendationMe = () => {
         </div>
         <div className="recomendationMe_paragraph_container">
           <p className="recomendationMe_paragraph_container_description">
-            Iniciar en el mundo de la programación es embarcarse en un viaje
+            Iniciarse en el mundo de la programación es embarcarse en un viaje
             apasionante de resolución de problemas y creatividad. Mi
             recomendación principal sería abrazar la mentalidad de aprendizaje
             continuo, ya que la tecnología evoluciona constantemente. Dedica
