@@ -75,6 +75,10 @@ export const useFormCreateTheme = (store, actions, closeModal) => {
       return;
     }
     validBackendCreateTheme();
+    closeModal();
+    onResetForm();
+    actions.temaEditFalse();
+    actions.temasList();
   };
 
   const update = async () => {

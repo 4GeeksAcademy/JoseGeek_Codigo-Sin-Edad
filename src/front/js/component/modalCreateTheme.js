@@ -19,10 +19,6 @@ const ModalTheme = ({ closeModal }) => {
 
   const handleCardClickSave = () => {
     handleSubmitCreateTheme();
-    closeModal();
-    onResetForm();
-    actions.temaEditFalse();
-    actions.temasList();
   };
 
   const closeModalTheme = () => {
