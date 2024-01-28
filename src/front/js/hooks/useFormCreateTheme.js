@@ -29,12 +29,6 @@ export const useFormCreateTheme = (store, actions, closeModal) => {
     if (!formState.description) {
       errors.description = "La descripción es requerida";
     }
-    if (formState.title.length < 6) {
-      errors.title = "El titulo debe tener mas de 6 caracteres";
-    }
-    if (formState.description.length < 9) {
-      errors.description = "La descripcion debe tener mas de 9 caracteres";
-    }
     return errors;
   };
 
