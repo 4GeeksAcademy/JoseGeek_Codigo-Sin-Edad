@@ -43,7 +43,7 @@ const Modal = ({ closeModal, children, description, temaId, usuarioId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (comentario === "") {
-      toast.error("El comentario no puede estar vacío");
+      return toast.error("El comentario no puede estar vacío");
     }
     // Aquí puedes hacer una solicitud a tu servidor backend para enviar el correo
     await fetch(`${process.env.REACT_APP_ADD_COMMENT}`, {
