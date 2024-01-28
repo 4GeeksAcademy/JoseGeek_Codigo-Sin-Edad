@@ -86,7 +86,7 @@ const Modal = ({ closeModal, children, description, temaId, usuarioId }) => {
         },
         body: JSON.stringify({
           contenido: comentario,
-          usuario_id: usuarioId,
+          usuario_id: store.dataUser.id,
         }),
       }
     )
@@ -108,7 +108,7 @@ const Modal = ({ closeModal, children, description, temaId, usuarioId }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        usuario_id: usuarioId,
+        usuario_id: store.dataUser.id,
       }),
     })
       .then((resp) => resp.json())
