@@ -39,7 +39,7 @@ function Navbar() {
                 >
                   Comunidad
                 </Link>
-                <Link
+                {/* <Link
                   to={store.dataUser && "/"}
                   className="btn link btn_responsive_disabled"
                   href="#contactUs"
@@ -51,7 +51,7 @@ function Navbar() {
                   href="#aboutMe"
                 >
                   Sobre mi
-                </Link>
+                </Link> */}
               </>
             ) : (
               <>
@@ -91,13 +91,13 @@ function Navbar() {
                 >
                   Inicio
                 </Link>
-                <Link
+                {/* <Link
                   to={store.dataUser && "/"}
                   className="btn link btn_responsive"
                   href="#aboutMe"
                 >
                   Sobre mi
-                </Link>
+                </Link> */}
                 <Link
                   to={store.dataUser && "/comunity"}
                   className="btn link btn_responsive"
