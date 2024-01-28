@@ -5,12 +5,19 @@ import { Link } from "react-router-dom";
 
 const PasswordRecovery = () => {
   const [email, setEmail] = useState("");
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
   const handleInputChange = (e) => {
     setEmail(e.target.value);
   };
 
   const handleSubmit = () => {
+    if (email === "") {
+      return toast.error("El campo no puede estar vacio");
+    }
+    if (!emailRegex.test(formState.user)) {
+      return toast.error("El correo electrónico no es válido");
+    }
     fetch(process.env.REACT_APP_FORWOUD, {
       method: "POST",
       headers: {
