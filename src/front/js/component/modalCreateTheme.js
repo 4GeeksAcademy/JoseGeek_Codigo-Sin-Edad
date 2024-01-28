@@ -62,6 +62,7 @@ const ModalTheme = ({ closeModal }) => {
               className="form-control"
               placeholder="Titulo del tema"
               value={title}
+              id="title"
             />
           </div>
           <div className="mb-3">
@@ -69,6 +70,7 @@ const ModalTheme = ({ closeModal }) => {
               Descripción
             </label>
             <textarea
+              id="description"
               onChange={onInputChange}
               value={description}
               name="description"
