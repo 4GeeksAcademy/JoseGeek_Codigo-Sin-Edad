@@ -19,7 +19,7 @@ const AboutMe = () => {
             </h2>
             <div className="aboutMe_title_flex">
               <p className="aboutMe_title_flex_paragraph">
-                ¡Hola!, soy Jose, aunque también me puedas llamar JoseGeek.
+                ¡Hola!, soy Jose, aunque también me puedas llamar Jose Geek.
                 Empecé un poco tarde a aprender a programar, ya con 44 años,
                 pero descubrí algo que me apasiona y que me ha llevado a querer
                 aprender cada día más. Esta web es para ayudarte en tu viaje
